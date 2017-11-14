@@ -26,9 +26,17 @@ public class GiarratanaAssignment {
 				if(f.exists() && !f.isDirectory()) { 
 					inputCsvPath = args[0];
 					outputCsvPath = inputCsvPath.replace(".csv","-aggregated.csv");
+					
+					//if an input csv exists, 3 steps are performed:
+					
+					// 1) input data are readed, dirty records are discarted and clean records are grouped by region
+					// 2) ratio are calculated over grouped data (ie: percentages of invalid votes
+					// 3) output data are written to a proper csv file
+					
 					readAndCleanCSV(inputCsvPath);				
-					sumData();
-					writeCsv(outputCsvPath);					
+					calcPercentages();
+					writeCsv(outputCsvPath);	
+					
 					System.out.println("Output file was written to " + outputCsvPath);
 					}
 			 else {
@@ -169,7 +177,7 @@ public class GiarratanaAssignment {
 	}	
 
     /* Calculates percentages and sums cleaned data into output variable*/
-	public static void sumData() {
+	public static void calcPercentages() {
 		output = new Object[NUM_REG_ITA][8];
 			
 		for (int i=0; i < NUM_REG_ITA; i++) {
