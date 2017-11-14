@@ -194,6 +194,7 @@ public class GiarratanaAssignment {
 					"Regione"+ CSV_SEPARATOR + "Elettori Maschi" + CSV_SEPARATOR + "Elettori Femmine" + CSV_SEPARATOR + "Elettori Totali" + CSV_SEPARATOR
 					+ "Percentuali votanti" + CSV_SEPARATOR + "Percentuale voti sì" + CSV_SEPARATOR + "Percentuale voti no" + CSV_SEPARATOR + "Percentuale schede bianche, non valide o contestate";
 					writer.write(line);
+		            writer.newLine();
 
 		for (int i=0; i < NUM_REG_ITA; i++) {
 			line = (output[i][0] + CSV_SEPARATOR +
