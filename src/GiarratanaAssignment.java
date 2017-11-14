@@ -77,7 +77,10 @@ public class GiarratanaAssignment {
 							|| townVote[0].trim().equalsIgnoreCase("TRENTINO-ALTO ADIGE")
 							|| townVote[0].trim().equalsIgnoreCase("UMBRIA")
 							|| townVote[0].trim().equalsIgnoreCase("VALLE D'AOSTA")
-							|| townVote[0].trim().equalsIgnoreCase("VENETO")) { //check region name 
+							|| townVote[0].trim().equalsIgnoreCase("VENETO")) { 
+						
+						//region name is validated. when possible it is cleaned by removing white spaces.
+						//otherwise records are discarted and a warning message is shown on console
 
 						if (!(curRegion.equalsIgnoreCase(townVote[0].trim()))) { // if
 																														// a
@@ -104,6 +107,8 @@ public class GiarratanaAssignment {
 						}
 					
 						try {
+							
+							//fields are to integer. if a bad formatted number is found, the whole line is discarted and a warning message is shown on console
 							eletM = Integer.parseInt(townVote[4]);
 							elet = Integer.parseInt(townVote[3]);
 							votanti = Integer.parseInt(townVote[5]);
@@ -116,6 +121,9 @@ public class GiarratanaAssignment {
 							if ((eletM >= 0) && (elet >= eletM) && (elet >= 0) && (votanti >= 0) && (votanti >= votantiSi)
 									&& (votanti >= votantiNo) && (votantiSi >= 0) && (votantiNo >= 0) && (bianche >= 0)
 									&& (nonValide >= 0) && (contestate >= 0)) {
+								
+								// fields are checked. if a meaningless data is found (ie: yes votes greater than total votes, negative numbers), the whole line is discarted and a warning message is shown on console								
+								
 								regionVote[regionCounter][1] = (int) regionVote[regionCounter][1] + eletM; // elettori maschi
 								regionVote[regionCounter][2] = (int) regionVote[regionCounter][2] + elet - eletM; // elettori  femmine
 								regionVote[regionCounter][3] = (int) regionVote[regionCounter][3] + elet; // elettori totali
